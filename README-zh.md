@@ -4,7 +4,7 @@
 
 一个灵活的 Vue 3 翻牌器组件库，支持时钟、倒计时、比分和数字动画显示。非常适合数据可视化大屏。
 
-[![npm version](https://img.shields.io/npm/v/vue-flip-card.svg)](https://www.npmjs.com/package/vue-flip-card)
+[![npm version](https://img.shields.io/npm/v/@gaoshunpeng/vue-flip-card.svg)](https://www.npmjs.com/package/@gaoshunpeng/vue-flip-card)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## ✨ 特性
@@ -22,11 +22,11 @@
 ## 📦 安装
 
 ```bash
-npm install vue-flip-card
+npm install @gaoshunpeng/vue-flip-card
 # 或
-yarn add vue-flip-card
+yarn add @gaoshunpeng/vue-flip-card
 # 或
-pnpm add vue-flip-card
+pnpm add @gaoshunpeng/vue-flip-card
 ```
 
 ## 🚀 快速开始
@@ -35,8 +35,8 @@ pnpm add vue-flip-card
 
 ```typescript
 import { createApp } from "vue";
-import VueFlipCard from "vue-flip-card";
-import "vue-flip-card/styles";
+import VueFlipCard from "@gaoshunpeng/vue-flip-card";
+import "@gaoshunpeng/vue-flip-card/styles";
 
 const app = createApp(App);
 app.use(VueFlipCard);
@@ -46,8 +46,13 @@ app.use(VueFlipCard);
 
 ```vue
 <script setup lang="ts">
-import { FlipNumber, FlipClock, FlipCountdown, FlipScore } from "vue-flip-card";
-import "vue-flip-card/styles";
+import {
+  FlipNumber,
+  FlipClock,
+  FlipCountdown,
+  FlipScore,
+} from "@gaoshunpeng/vue-flip-card";
+import "@gaoshunpeng/vue-flip-card/styles";
 </script>
 ```
 
