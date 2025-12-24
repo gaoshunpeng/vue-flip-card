@@ -1,5 +1,5 @@
 {
-  "name": "vue-flip-card",
+  "name": "@gaoshunpeng/vue-flip-card",
   "version": "1.0.0",
   "description": "A flexible Vue 3 flip card component for clocks, countdowns, scores and number animations",
   "main": "src/index.ts",
