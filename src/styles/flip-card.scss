@@ -1,0 +1,203 @@
+// ============================================
+// FlipCard 核心样式
+// ============================================
+
+.flip-card {
+  position: relative;
+  width: var(--flip-card-width);
+  height: var(--flip-card-height);
+  margin: 0 calc(var(--flip-card-gap) / 2);
+  font-family: "DIN", "Roboto Mono", "SF Mono", monospace;
+  font-size: var(--flip-font-size);
+  font-weight: 600;
+  color: var(--flip-text-color);
+  perspective: 300px;
+  box-shadow: var(--flip-shadow);
+  border-radius: var(--flip-card-radius);
+
+  // 上下两半静态背景
+  &__top,
+  &__bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__top {
+    top: 0;
+    background: var(--flip-bg-top);
+    border-radius: var(--flip-card-radius) var(--flip-card-radius) 0 0;
+    border-bottom: 1px solid var(--flip-border-color);
+
+    span {
+      position: absolute;
+      top: 100%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__bottom {
+    bottom: 0;
+    background: var(--flip-bg-bottom);
+    border-radius: 0 0 var(--flip-card-radius) var(--flip-card-radius);
+
+    span {
+      position: absolute;
+      bottom: 100%;
+      transform: translateY(50%);
+    }
+  }
+
+  // 翻转动画层
+  &__back,
+  &__front {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 50%;
+    overflow: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // 翻转上半部分
+  &__back {
+    top: 0;
+    background: var(--flip-bg-top);
+    border-radius: var(--flip-card-radius) var(--flip-card-radius) 0 0;
+    transform-origin: bottom center;
+    transform: rotateX(0deg);
+    z-index: 3;
+
+    span {
+      position: absolute;
+      top: 100%;
+      transform: translateY(-50%);
+    }
+
+    &.flip-down {
+      animation: flipDown var(--flip-duration) var(--flip-timing-down) forwards;
+    }
+  }
+
+  // 翻转下半部分
+  &__front {
+    bottom: 0;
+    background: var(--flip-bg-bottom);
+    border-radius: 0 0 var(--flip-card-radius) var(--flip-card-radius);
+    transform-origin: top center;
+    transform: rotateX(90deg);
+    z-index: 2;
+
+    span {
+      position: absolute;
+      bottom: 100%;
+      transform: translateY(50%);
+    }
+
+    &.flip-up {
+      animation: flipUp var(--flip-duration) calc(var(--flip-duration) * 0.5)
+        var(--flip-timing-up) forwards;
+    }
+  }
+}
+
+// 翻转动画
+@keyframes flipDown {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-90deg);
+  }
+}
+
+@keyframes flipUp {
+  0% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+// 分隔符样式
+.flip-separator {
+  font-family: "DIN", "Roboto Mono", monospace;
+  font-size: var(--flip-font-size);
+  font-weight: 600;
+  color: var(--flip-separator-color);
+  margin: 0 calc(var(--flip-card-gap) * 2);
+  display: flex;
+  align-items: center;
+}
+
+// 容器样式
+.flip-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+// 分组样式(时钟/倒计时用)
+.flip-group {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__cards {
+    display: flex;
+    align-items: center;
+  }
+
+  &__label {
+    font-size: var(--flip-label-size);
+    color: var(--flip-label-color);
+    margin-top: var(--flip-label-margin);
+    text-align: center;
+  }
+}
+
+// 比分样式
+.flip-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+
+  &__team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__name {
+    font-size: var(--flip-label-size);
+    color: var(--flip-label-color);
+  }
+
+  &__vs {
+    font-size: calc(var(--flip-font-size) * 0.6);
+    color: var(--flip-separator-color);
+    font-weight: 600;
+  }
+}
+
+// 数字容器
+.flip-number {
+  display: inline-flex;
+  align-items: center;
+
+  &__prefix,
+  &__suffix {
+    font-size: calc(var(--flip-font-size) * 0.7);
+    color: var(--flip-text-color);
+    margin: 0 var(--flip-card-gap);
+  }
+}
